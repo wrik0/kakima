@@ -29,9 +29,12 @@ func excelStyleAlphaFromInt(i int) string {
 	return s
 }
 
-func getServerString(serverId int, virtualCount int, collisionCount int) string {
+func getServerString(serverName string, virtualCount int, collisionCount int) string {
 	var s string = DefaultServerPrefix
-	s = fmt.Sprintf("%s#%03d-%02d", s, serverId, virtualCount)
+	if serverName != "" {
+		s = serverName
+	}
+	s = fmt.Sprintf("%s#%03d", s, virtualCount)
 	if collisionCount == 0 {
 		return s
 	}
@@ -42,5 +45,5 @@ func getServerString(serverId int, virtualCount int, collisionCount int) string 
 }
 
 func main() {
-	fmt.Println(getServerString(4, 23, 52))
+	fmt.Println(getServerString("redis-cache", 23, 52))
 }
