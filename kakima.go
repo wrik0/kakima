@@ -17,7 +17,9 @@ func hashFNV1a(s string) uint64 {
 	return hasher.Sum64()
 }
 
-// TODO: bugfix stops working after 27 #jugaad
+// Returns excel stryle notation from integer, i.e.
+// 26 will be denoted by "Z" and 31 will be denoted
+// by "AE"
 func excelStyleAlphaFromInt(i int) string {
 	var s string
 	for i > 0 {
@@ -45,5 +47,5 @@ func getServerString(serverName string, virtualCount int, collisionCount int) st
 }
 
 func main() {
-	fmt.Println(getServerString("redis-cache", 23, 52))
+	fmt.Println(getServerString("redis-cache", 23, 31))
 }
